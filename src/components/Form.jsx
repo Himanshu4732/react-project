@@ -2,31 +2,26 @@ import React, { useState } from "react";
 import { IoMdClose } from "react-icons/io";
 import Cards from "./Cards";
 
-function Form({ setShow }) {
+function Form({ formData, setformData, setShow }) {
   const [desc, setdesc] = useState("");
   const [Size, setSize] = useState("");
   const [Tag, setTag] = useState(false);
   const [TagContent, setTagContent] = useState("");
   const [TagColor, setTagColor] = useState("");
-  const [formData, setformData] = useState([]);
   const [formSubmitted, setFormSubmitted] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("Submitting form...");
-
      const Data = {
       description: desc,
       size: Size,
       tag: { isopen: Tag, tagContent: TagContent, tagColor: TagColor },
     };
     console.log("Form data:", Data);
-   setformData([...formData, Data]);
+    setformData([...formData, Data]);
 
     console.log(formData)
-    
-   
-
     setdesc("");
     setSize("");
     setTag(false);
@@ -35,6 +30,8 @@ function Form({ setShow }) {
     setShow(false);
   };
 
+
+
   return (
     <>
       <div className="w-full h-screen absolute top-0 left-0 z-7 bg-zinc-600/60">
@@ -42,11 +39,9 @@ function Form({ setShow }) {
           <IoMdClose
             className="absolute top-7 right-7 text-red-600 cursor-pointer"
             size="2rem"
-            onClick={() => {
-              if (formSubmitted) {
-                setShow(false);
-              }
-            }}
+            onClick={() => 
+                setShow(false)
+            }
           />
           <h1 className="font-semibold text-3xl font-sans py-3 pb-5">
             NEW DOCUMENT
@@ -132,11 +127,7 @@ function Form({ setShow }) {
             </div>
           </form>
         </div>
-        
       </div>
-      {formData.map((item, index) => (
-      <Cards key={index} data={item} />
-    ))}
     </>
   );
 }
