@@ -9,3 +9,10 @@
 ::selection{
        color: rgba(237, 172, 52, 0.922);
 }
+@layer utilities {
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+  
+  
+}
