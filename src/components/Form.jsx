@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { IoMdClose } from "react-icons/io";
-import Cards from "./Cards";
+
 
 function Form({ formData, setformData, setShow }) {
   const [desc, setdesc] = useState("");
@@ -34,7 +34,7 @@ function Form({ formData, setformData, setShow }) {
 
   return (
     <>
-      <div className="w-full h-screen absolute top-0 left-0 z-7 bg-zinc-600/60">
+      <div className="w-full h-screen absolute top-0 left-0 z-7 bg-zinc-600/60 z-[7]">
         <div className="absolute flex flex-col justify-center items-center px-3 py-8 rounded-2xl top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2/5 h-3/4 bg-zinc-900 z-10 text-white">
           <IoMdClose
             className="absolute top-7 right-7 text-red-600 cursor-pointer"
@@ -53,7 +53,7 @@ function Form({ formData, setformData, setShow }) {
                 required
                 type="text"
                 value={desc}
-                className="w-full text-black rounded-lg p-2 "
+                className="w-full text-black rounded-lg p-2 placeholder:italic placeholder:text-slate-400"
                 placeholder="Enter your description"
                 onChange={(e) => setdesc(e.target.value)}
               />
